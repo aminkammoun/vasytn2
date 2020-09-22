@@ -79,10 +79,10 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="12" md="12" style="margin-left:35%;">
+            <v-col cols="12" md="12" style="margin-left:30%;">
               <span
-                >créer un compte...
-                <router-link to="/signUp">ici</router-link></span
+                >vous avez déja un compte...
+                <router-link to="/logIn" style="color:blue !important">cliquer ici</router-link></span
               >
             </v-col>
           </v-row>

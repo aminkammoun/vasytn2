@@ -58,7 +58,7 @@
             <v-col cols="12" md="12" style="margin-left:35%;">
               <span
                 >créer un compte...
-                <router-link to="/signUp">ici</router-link></span
+                <router-link to="/signUp" style="color:blue !important"> cliquer ici</router-link></span
               >
             </v-col>
           </v-row>

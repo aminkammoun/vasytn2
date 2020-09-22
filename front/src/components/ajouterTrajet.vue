@@ -263,6 +263,7 @@ export default {
 
 .annonceBtn {
   width: 100%;
+  color: white;
   background: #5b7ffc !important;
 }
 .v-card {
