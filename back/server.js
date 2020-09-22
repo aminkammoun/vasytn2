@@ -17,7 +17,11 @@ app.use(function (req, res, next) {
 });
 
 mongoose
-  .connect(process.env.MONGO||"mongodb://localhost/covoiturage")
+  .connect(process.env.MONGO || "mongodb://localhost/covoiturage", {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true
+  })
   .then(() => {
     console.log("connect to db");
   })
@@ -33,7 +37,7 @@ app.use("/reservation", reservation);
 
 if (process.env.NODE_ENV == "production") {
   app.use(express.static(__dirname + "/public/"));
-  app.get(/.*/ , (req,res)=> res.sendFile(__dirname + '/public/index.html'))
+  app.get(/.*/, (req, res) => res.sendFile(__dirname + "/public/index.html"));
 }
 //app.use("/users", usersRoutes);
 
