@@ -58,7 +58,9 @@
             <v-col cols="12" md="12" style="margin-left:35%;">
               <span
                 >créer un compte...
-                <router-link to="/signUp" style="color:blue !important"> cliquer ici</router-link></span
+                <router-link to="/signUp" style="color:blue !important">
+                  cliquer ici</router-link
+                ></span
               >
             </v-col>
           </v-row>
@@ -127,23 +129,23 @@ export default {
             this.setWithExpiry("token", this.authData.token, 86400000);
             localStorage.setItem("idUser", this.authData.userId);
 
-            console.log("okkk");
-            axios
-              .get("user/" + this.authData.userId)
-              .then((res) => {
-                localStorage.setItem("userProfil", JSON.stringify(res.data));
-              });
-
-            this.$router.push({
-              name: "home",
+            axios.get("user/" + this.authData.userId).then((res) => {
+              localStorage.setItem("userProfil", JSON.stringify(res.data));
+              console.log("okkk");
             });
-            this.$router.go();
           })
           .catch((err) => {
             console.log(err);
             this.snackbar = true;
           });
       }
+
+      setTimeout(() => {
+        this.$router.push({
+        name: "home",
+      });         this.$router.go(0);
+      }, 2000);
+      
     },
   },
 };

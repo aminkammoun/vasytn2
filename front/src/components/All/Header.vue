@@ -3,16 +3,16 @@
     <v-app-bar color="#1E1E5D" dark flat class=".d-md-none .d-lg-flex">
       <v-toolbar-title>
         <router-link to="/"
-          ><img class="Logo" src="../assets/image/monLogo.png"
+          ><img class="Logo" src="../../assets/image/monLogo.png"
         /></router-link>
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <v-btn tile text class="ma-2 hidden-sm-and-down">
+      <v-btn text class="ma-2 hidden-sm-and-down" @click="checkAuth">
         <v-icon>mdi-plus</v-icon>
         <router-link to="/ajoutTrajet">ajouter trajet</router-link>
       </v-btn>
-      <v-btn text class="hidden-sm-and-down">
+      <v-btn text class="hidden-sm-and-down" @click="checkAuth">
         <v-icon>mdi-magnify</v-icon>
         <router-link to="/rechercheTrajet">chercher trajet</router-link>
       </v-btn>
@@ -76,7 +76,7 @@
               >historique</router-link
             >
           </v-list-item>
-          
+
           <v-list-item
             ><v-btn text @click="logOut" v-if="token">
               deconnexion
@@ -110,10 +110,9 @@ export default {
       localStorage.removeItem("userProfil");
       localStorage.removeItem("token");
       localStorage.removeItem("idUser");
-      
+
       this.$router.push({ name: "home" });
       this.$router.go(0);
-      
     },
 
     getWithExpiry(key) {
@@ -130,6 +129,11 @@ export default {
         return null;
       }
       return item.value;
+    },
+    checkAuth() {
+      if (!this.token) {
+        this.$router.push("/logIn");
+      }
     },
   },
 };
