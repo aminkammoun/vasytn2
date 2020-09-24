@@ -23,6 +23,13 @@ router.get("/history/:id", async (req, res) => {
 
   res.send(reservation);
 });
+router.delete("/:id", async (req, res) => {
+  const reservation = await Reservation.findByIdAndDelete({idPoster: req.params.id});
 
+  if (!reservation)
+    return res.status(404).send("The genre with the given ID was not found.");
+
+  res.send(reservation);
+});
 
 module.exports = router;

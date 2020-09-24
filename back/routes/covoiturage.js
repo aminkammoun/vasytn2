@@ -48,7 +48,7 @@ router.put("/:id", async (req, res) => {
   res.send(genre);
 });
 
-router.delete("/:id", checkAuth, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const cov = await Covoiturage.findByIdAndRemove(req.params.id);
 
   if (!cov)
