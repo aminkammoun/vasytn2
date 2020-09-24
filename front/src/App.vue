@@ -32,14 +32,15 @@ export default {
 };
 </script>
 <style scoped>
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
-.v-app {
-  font-family: "Poppins", sans-serif !important;
+*{
+  font-family: Open Sans,Lato,sans-serif !important;
 }
+
 .all {
   padding: 0;
   margin: 0;
   min-height: 100vh;
+ /* background:  #252e38; */
   background: #f2f5f8;
 }
 </style>

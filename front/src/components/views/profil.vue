@@ -10,7 +10,7 @@
                 <div
                   style="text-align: center;
     position: relative;
-    left: 42%;"
+    left: 32%;"
                 >
                   <v-avatar
                     color="indigo"
@@ -32,7 +32,7 @@
 
                 <v-list-item>
                   <v-list-item-avatar>
-                    <v-icon color="indigo">mdi-email</v-icon>
+                    <v-icon color="#f2bb13">mdi-email</v-icon>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
@@ -44,7 +44,7 @@
                 </v-list-item>
                 <v-list-item>
                   <v-list-item-avatar>
-                    <v-icon color="indigo">mdi-phone</v-icon>
+                    <v-icon color="#f2bb13">mdi-phone</v-icon>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
@@ -77,7 +77,7 @@
 
                 <v-list-item>
                   <v-list-item-avatar>
-                    <v-icon color="indigo">mdi-smoking</v-icon>
+                    <v-icon color="#f2bb13">mdi-smoking</v-icon>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
@@ -114,7 +114,7 @@
 
                 <v-list-item>
                   <v-list-item-avatar>
-                    <v-icon color="indigo">mdi-car</v-icon>
+                    <v-icon color="#f2bb13">mdi-car</v-icon>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
@@ -147,7 +147,7 @@
 
                 <v-list-item>
                   <v-list-item-avatar>
-                    <v-icon color="indigo">mdi-theme-light-dark</v-icon>
+                    <v-icon color="#f2bb13">mdi-theme-light-dark</v-icon>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
@@ -191,18 +191,7 @@
               </v-list>
             </v-card>
 
-            <v-btn
-              success
-              @click="update"
-              x-large
-              style="
-    margin-top: 6px;
-    position: relative;
-    left: 32%;
-    background: mediumspringgreen;
-    font-family: Quicksand,sans-serif!important;"
-              >sauvegarder</v-btn
-            >
+            <v-btn success @click="update" x-large class="updateBtn">sauvegarder</v-btn>
           </div>
         </v-col>
         <v-col cols="12" md="3"> </v-col>
@@ -254,13 +243,12 @@ export default {
         fumer: this.fumer,
         climat: this.climat,
         rating: this.rating,
+      }).then(() => {
+        this.$router.go(0);
       });
-      this.$router.go(0);
     },
     loadPorfil() {
-      Axios.get(
-        "user/" + localStorage.getItem("idUser")
-      ).then((res) => {
+      Axios.get("user/" + localStorage.getItem("idUser")).then((res) => {
         this.$store.state.userProfil = res.data;
         localStorage.setItem(
           "userProfil",
@@ -282,5 +270,14 @@ export default {
 }
 .rate {
   text-align: center !important;
+}
+.updateBtn {
+  margin-top: 6px;
+  position: relative;
+  left: 32%;
+  background: #f2bb13 !important;
+  font-family: Quicksand, sans-serif !important;
+  font-weight: 600;
+  color: #454c55;
 }
 </style>

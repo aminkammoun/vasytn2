@@ -3,7 +3,48 @@
     <v-container>
       <h1>reservations</h1>
       <v-divider></v-divider>
-      <v-row>
+      <v-alert dense text type="info" v-if="nmbrHistoryReserver">
+        vous n'avez pas aucune trajet annoncé
+      </v-alert>
+      <v-row v-if="!historyBool">
+        <v-col cols="12" md="4">
+          <v-sheet
+            :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+            class="px-3 pb-3"
+          >
+            <v-skeleton-loader
+              class="mx-auto"
+              max-width="350"
+              type="card"
+            ></v-skeleton-loader>
+          </v-sheet>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-sheet
+            :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+            class="px-3 pb-3"
+          >
+            <v-skeleton-loader
+              class="mx-auto"
+              max-width="350"
+              type="card"
+            ></v-skeleton-loader>
+          </v-sheet>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-sheet
+            :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+            class="px-3 pb-3"
+          >
+            <v-skeleton-loader
+              class="mx-auto"
+              max-width="350"
+              type="card"
+            ></v-skeleton-loader>
+          </v-sheet>
+        </v-col>
+      </v-row>
+      <v-row v-if="historyBool">
         <v-col cols="12" md="4" v-for="(res, index) in reser" :key="index">
           <v-hover>
             <template v-slot:default="{ hover }">
@@ -56,7 +97,48 @@
     <v-container>
       <h1>mes trajets</h1>
       <v-divider></v-divider>
-      <v-row>
+      <v-alert dense text type="info" v-if="nmbrHistoryTrajets">
+        vous n'avez pas aucune trajet annoncé
+      </v-alert>
+      <v-row v-if="!historyTrajetBool">
+        <v-col cols="12" md="4">
+          <v-sheet
+            :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+            class="px-3 pb-3"
+          >
+            <v-skeleton-loader
+              class="mx-auto"
+              max-width="350"
+              type="card"
+            ></v-skeleton-loader>
+          </v-sheet>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-sheet
+            :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+            class="px-3 pb-3"
+          >
+            <v-skeleton-loader
+              class="mx-auto"
+              max-width="350"
+              type="card"
+            ></v-skeleton-loader>
+          </v-sheet>
+        </v-col>
+        <v-col cols="12" md="4">
+          <v-sheet
+            :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
+            class="px-3 pb-3"
+          >
+            <v-skeleton-loader
+              class="mx-auto"
+              max-width="350"
+              type="card"
+            ></v-skeleton-loader>
+          </v-sheet>
+        </v-col>
+      </v-row>
+      <v-row v-if="historyTrajetBool">
         <v-col cols="12" md="4" v-for="(res, index) in trajets" :key="index">
           <v-hover>
             <template v-slot:default="{ hover }">
@@ -108,21 +190,28 @@
 <script>
 import axios from "axios";
 export default {
+  inject: ["theme"],
   data() {
     return {
       reser: [],
       trajets: [],
+      historyBool: false,
+      historyTrajetBool: false,
+      nmbrHistoryTrajets: false,
+      nmbrHistoryReserver: false,
     };
   },
   created() {
     axios
       .get("reservation/history/" + this.$store.state.userProfil._id)
       .then((res) => {
-        console.log("ok", res.data);
         for (var i = 0; i < res.data.length; i++) {
+          var idReservation = res.data[i]._id;
           axios.get("covoiturage/" + res.data[i].idPoster).then((response) => {
             if (response.data !== "") {
+              response.data["idRe"] = idReservation
               this.reser.push(response.data);
+              
             }
           });
         }
@@ -132,18 +221,29 @@ export default {
             for (var i = 0; i < response.data.length; i++) {
               this.trajets.push(response.data[i]);
             }
+          })
+          .then(() => {
+            if (this.trajets.length < 1) {
+              this.nmbrHistoryTrajets = true;
+            }
+            if (this.reser.length < 1) {
+              this.nmbrHistoryReserver = true;
+            }
 
-            console.log("trajet", this.trajets);
+            (this.historyBool = true), (this.historyTrajetBool = true);
+            console.log(this.reser);
           });
       });
+
     /*  */
   },
   methods: {
     delecteReserHistory(index) {
+     
       axios
-        .delete("covoiturage/" + this.reser[index]._id)
+        .delete("reservation/" + this.reser[index].idRe)
         .then(() => {
-          this.$toute.go(0);
+          this.$router.go(0);
         })
         .catch((err) => {
           console.log(err);
@@ -151,7 +251,7 @@ export default {
     },
     deleteTrajetHistory(index) {
       axios.delete("covoiturage/" + this.trajets[index]._id).then(() => {
-        this.$router.go(0); 
+        this.$router.go(0);
       });
     },
   },

@@ -49,7 +49,7 @@
                 type="password"
                 outlined
               ></v-text-field>
-              <v-btn color="primary" @click="logIn" style=" width:100%;" x-large
+              <v-btn color="#f2bb13" @click="logIn" style=" width:100%;" x-large
                 >submit</v-btn
               >
             </v-col>

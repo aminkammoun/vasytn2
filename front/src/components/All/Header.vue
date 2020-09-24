@@ -1,6 +1,6 @@
 <template>
   <div style="heigth:100%;">
-    <v-app-bar color="#1E1E5D" dark flat class=".d-md-none .d-lg-flex">
+    <v-app-bar color="#252e38"  class=".d-md-none .d-lg-flex">
       <v-toolbar-title>
         <router-link to="/"
           ><img class="Logo" src="../../assets/image/monLogo.png"
@@ -8,12 +8,12 @@
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
-      <v-btn text class="ma-2 hidden-sm-and-down" @click="checkAuth">
-        <v-icon>mdi-plus</v-icon>
+      <v-btn text class="ma-2 hidden-sm-and-down " @click="checkAuth">
+        <v-icon color="#f2bb13">mdi-plus</v-icon>
         <router-link to="/ajoutTrajet">ajouter trajet</router-link>
       </v-btn>
       <v-btn text class="hidden-sm-and-down" @click="checkAuth">
-        <v-icon>mdi-magnify</v-icon>
+        <v-icon color="#f2bb13">mdi-magnify</v-icon>
         <router-link to="/rechercheTrajet">chercher trajet</router-link>
       </v-btn>
       <v-spacer></v-spacer>
@@ -28,11 +28,11 @@
         <router-link to="/history"><v-icon>mdi-history</v-icon></router-link>
       </v-btn>
       <v-btn text v-if="token" class="hidden-sm-and-down">
-        <v-icon>mdi-account-multiple-outline</v-icon>
+        <v-icon color="#f2bb13">mdi-account-multiple-outline</v-icon>
         <router-link to="/profil">{{ token ? username : "" }}</router-link>
       </v-btn>
       <v-btn @click="logOut" text icon v-if="token" class="hidden-sm-and-down">
-        <v-icon>mdi-logout</v-icon>
+        <v-icon color="white">mdi-logout</v-icon>
       </v-btn>
 
       <v-app-bar-nav-icon
@@ -138,9 +138,13 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
+* {
+  font-family: Open Sans, Lato, sans-serif !important;
+}
 a {
-  color: white !important;
+  font-weight: 600;
+  color: #f2bb13 !important;
   text-decoration: none !important;
 }
 .btn {

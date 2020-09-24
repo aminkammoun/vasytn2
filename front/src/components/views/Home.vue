@@ -54,7 +54,8 @@
             </v-col>
             <v-col cols="12" md="3">
               <v-btn class="btn_search">
-                recherche
+                <router-link to="reche">recherche</router-link>
+                
               </v-btn>
             </v-col>
           </v-row>
@@ -118,7 +119,7 @@ h2 {
   text-align: center;
 }
 .home_large {
-  background-image: url("../assets/image/co.jpeg");
+  background-image: url("../../assets/image/co.jpeg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -150,9 +151,10 @@ h2 {
   margin-left: 0px;
 }
 .btn_search {
-  background-color: #000 !important;
+  background: #f2bb13 !important;
   position: relative;
-  color: #fff !important;
+  color: #454c55;
+  font-weight: 600;
   left: 20px;
   top: 12px;
 }
@@ -169,5 +171,11 @@ h2 {
 .slide-fade-leave-to {
   transform: translateX(10px);
   opacity: 0;
+}
+a {
+  font-weight: 600;
+  color: #454c55 !important;
+  text-decoration: none !important;
+
 }
 </style>

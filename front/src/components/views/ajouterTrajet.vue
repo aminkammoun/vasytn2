@@ -1,18 +1,20 @@
 <template>
   <div class="all">
-    <v-tabs centered>
-      <v-tab @click="tabs = 'chauffeur'">chauffeur</v-tab>
-      <v-tab @click="tabs = 'passenger'">passager</v-tab>
-    </v-tabs>
+    <v-toolbar color="#252e38" dark flat dense>
+      <v-tabs centered class="color:red !important">
+        <v-tab @click="tabs = 'chauffeur'">chauffeur</v-tab>
+        <v-tab @click="tabs = 'passenger'">passager</v-tab>
+      </v-tabs>
+    </v-toolbar>
 
     <v-container v-if="tabs == 'chauffeur'">
       <v-row>
         <v-col cols="12" md="6" class="imgAdd">
-          <img src="../assets/image/5568701.png" class="imgAdd" />
+          <img src="../../assets/image/5568701.png" class="imgAdd" />
         </v-col>
 
         <v-col cols="12" md="6">
-          <v-card>
+          <v-card >
             <v-textarea
               :rules="Rules"
               required
@@ -50,6 +52,7 @@
               </v-col>
               <v-col cols="12" md="6">
                 <v-switch
+                color="#f2bb13"
                   v-model="switch1"
                   :label="`bagage: ${switch1.toString()}`"
                 ></v-switch>
@@ -118,7 +121,7 @@
     <v-container v-else>
       <v-row>
         <v-col cols="12" md="6">
-          <img src="../assets/image/5568701.png" class="imgAdd" />
+          <img src="../../assets/image/5568701.png" class="imgAdd" />
         </v-col>
         <v-col cols="12" md="6">
           <v-card>
@@ -263,8 +266,10 @@ export default {
 
 .annonceBtn {
   width: 100%;
-  color: white;
-  background: #5b7ffc !important;
+  color: #454c55;
+  background: #f2bb13 !important;
+  font-family: Open Sans,Lato,sans-serif !important;
+  font-weight: 600;;
 }
 .v-card {
   padding: 17px;
