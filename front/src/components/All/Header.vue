@@ -1,6 +1,6 @@
 <template>
   <div style="heigth:100%;">
-    <v-app-bar color="#252e38"  class=".d-md-none .d-lg-flex">
+    <v-app-bar color="#252e38" class=".d-md-none .d-lg-flex">
       <v-toolbar-title>
         <router-link to="/"
           ><img class="Logo" src="../../assets/image/monLogo.png"
@@ -165,8 +165,8 @@ a {
   color: black !important;
 }
 .Logo {
-  padding-top: 9px;
+  padding-top: 11px;
   width: 134px;
-  height: 108px;
+  height: 166px;
 }
 </style>
