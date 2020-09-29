@@ -28,6 +28,7 @@ const covoiturageSchema = new mongoose.Schema({
     type: String,
   },
   nbrePlace: {
+    required:true,
     type: String,
   },
   bagage: {

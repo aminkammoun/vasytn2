@@ -31,10 +31,10 @@
                 :rules="Rules"
                 required
                 class="inputField"
-                v-model="username"
-                label="username"
-                name="username"
-                id="username"
+                v-model="email"
+                label="email"
+                name="email"
+                id="email"
                 outlined
               ></v-text-field>
 
@@ -85,7 +85,7 @@ export default {
   data() {
     return {
       Rules: [(v) => !!v || "champ obligatoire"],
-      username: "",
+      email: "",
       password: "",
       emailCheck: false,
       passwordCheck: false,
@@ -105,7 +105,7 @@ export default {
     },
 
     logIn() {
-      if (this.username == "") {
+      if (this.email == "") {
         this.emailCheck = true;
         setTimeout(() => {
           this.emailCheck = false;
@@ -119,7 +119,7 @@ export default {
       } else {
         axios
           .post("user/login", {
-            username: this.username,
+            email: this.email,
             password: this.password,
           })
           .then((res) => {
@@ -170,7 +170,6 @@ h1 {
 .admin {
   margin-top: 32px !important;
   margin-left: 40%;
-
   font-size: 0.625rem !important;
   letter-spacing: 0.1666666667em !important;
   line-height: 1rem;

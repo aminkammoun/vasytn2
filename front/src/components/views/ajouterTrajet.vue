@@ -14,7 +14,7 @@
         </v-col>
 
         <v-col cols="12" md="6">
-          <v-card >
+          <v-card>
             <v-textarea
               :rules="Rules"
               required
@@ -52,7 +52,7 @@
               </v-col>
               <v-col cols="12" md="6">
                 <v-switch
-                color="#f2bb13"
+                  color="#f2bb13"
                   v-model="switch1"
                   :label="`bagage: ${switch1.toString()}`"
                 ></v-switch>
@@ -190,6 +190,7 @@
                   :rules="Rules"
                   required
                   dense
+                  v-model="places"
                   rounded
                   outlined
                   prepend-icon=""
@@ -199,7 +200,9 @@
                 ></v-text-field>
               </v-col>
             </v-row>
-            <v-btn success class="annonceBtn" @click="annoncer">annoncer</v-btn>
+            <v-btn success class="annonceBtn" @click="annoncerPasenger"
+              >annoncer</v-btn
+            >
           </v-card>
         </v-col>
       </v-row>
@@ -235,6 +238,26 @@ export default {
       axios
         .post("covoiturage/postCov", {
           username: this.$store.state.userProfil.username,
+          type: this.tabs,
+          depart: this.depart,
+          arrive: this.arrive,
+          time: this.time,
+          phone: this.$store.state.userProfil.phone,
+          description: this.description,
+          nbrePlace: this.places,
+          prix: this.cotisation,
+          bagage: this.switch1.toString(),
+          idUserPoster: this.$store.state.userProfil._id,
+        })
+        .then(() => {
+          this.$router.push("/rechercheTrajet");
+          this.$router.go(0);
+        });
+    },
+    annoncerPasenger() {
+      axios
+        .post("covoiturage/postCov", {
+          username: this.$store.state.userProfil.username,
 
           type: this.tabs,
           depart: this.depart,
@@ -242,9 +265,8 @@ export default {
           time: this.time,
           phone: this.$store.state.userProfil.phone,
           description: this.description,
-          nbrPlace: this.places,
-          prix: this.cotisation,
-          bagage: this.switch1.toString(),
+          nbrePlace: this.places,
+
           idUserPoster: this.$store.state.userProfil._id,
         })
         .then(() => {
@@ -268,8 +290,8 @@ export default {
   width: 100%;
   color: #454c55;
   background: #f2bb13 !important;
-  font-family: Open Sans,Lato,sans-serif !important;
-  font-weight: 600;;
+  font-family: Open Sans, Lato, sans-serif !important;
+  font-weight: 600;
 }
 .v-card {
   padding: 17px;

@@ -6,7 +6,7 @@
           <v-col cols="12" md="4">
             <v-sheet
               :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
-                class="px-3 pb-3"
+              class="px-3 pb-3"
             >
               <v-skeleton-loader
                 class="mx-auto"
@@ -18,7 +18,7 @@
           <v-col cols="12" md="4">
             <v-sheet
               :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
-                class="px-3 pb-3"
+              class="px-3 pb-3"
             >
               <v-skeleton-loader
                 class="mx-auto"
@@ -30,7 +30,7 @@
           <v-col cols="12" md="4">
             <v-sheet
               :color="`grey ${theme.isDark ? 'darken-2' : 'lighten-4'}`"
-                class="px-3 pb-3"
+              class="px-3 pb-3"
             >
               <v-skeleton-loader
                 class="mx-auto"
@@ -66,26 +66,31 @@
                 <v-list-item-avatar color="grey"></v-list-item-avatar>
                 <v-list-item-content>
                   <v-list-item-title class="headline">
-                    cov {{ trajet.depart }}
-                    <v-icon>mdi-arrow-right-bold</v-icon>
-                    {{ trajet.arrive }}
-                  </v-list-item-title>
-                  <v-list-item-subtitle
-                    >annoncer par:
                     <span class="userStyle" @click="getProfilAnonce(index)">
                       {{ trajet.username }}</span
                     >
+                  </v-list-item-title>
+                  <v-list-item-subtitle>
+                    {{ trajet.time }}
                   </v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
               <v-card-text>
-                <v-chip small class="mr-1">{{ trajet.time }}</v-chip>
                 <v-chip small
                   >bagage :{{ trajet.bagage ? "oui" : "non" }}</v-chip
                 >
                 <v-chip small class="ml-1">prix :{{ trajet.prix }} TND</v-chip>
+                <v-chip small class="ml-1">
+                  {{ trajet.nbrePlace }} places</v-chip>
               </v-card-text>
-              <v-card-text>{{ trajet.description }}</v-card-text>
+              <v-card-text>
+                cov {{ trajet.depart }}
+                <v-icon>mdi-arrow-right-bold</v-icon>
+                {{ trajet.arrive }}
+                <v-card-text>{{ trajet.description }} </v-card-text>
+                </v-card-text
+              >
+              
 
               <v-card-actions>
                 <v-btn
@@ -205,10 +210,9 @@
 import axios from "axios";
 
 export default {
-  inject: ['theme'],
+  inject: ["theme"],
   data() {
     return {
-     
       tabs: "chauffeur",
       trajetPassenger: [],
       trajetChauffeur: [],
@@ -223,18 +227,21 @@ export default {
     };
   },
   created() {
-    axios.get("covoiturage/").then((res) => {
-      for (var i = 0; i < res.data.length; i++) {
-        if (res.data[i].type == "chauffeur") {
-          this.trajetChauffeur.push(res.data[i]);
-        } else {
-          this.trajetPassenger.push(res.data[i]);
+    axios
+      .get("covoiturage/")
+      .then((res) => {
+        for (var i = 0; i < res.data.length; i++) {
+          if (res.data[i].type == "chauffeur") {
+            this.trajetChauffeur.push(res.data[i]);
+            console.log(this.trajetChauffeur)
+          } else {
+            this.trajetPassenger.push(res.data[i]);
+          }
         }
-      }
-     
-    }).then(()=>{
-      this.recheBool = true;
-    });
+      })
+      .then(() => {
+        this.recheBool = true;
+      });
   },
   methods: {
     reservation(index) {

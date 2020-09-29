@@ -4,7 +4,7 @@
       <h1>reservations</h1>
       <v-divider></v-divider>
       <v-alert dense text type="info" v-if="nmbrHistoryReserver">
-        vous n'avez pas aucune trajet annoncé
+        vous n'avez pas aucune trajet réserver
       </v-alert>
       <v-row v-if="!historyBool">
         <v-col cols="12" md="4">
@@ -57,12 +57,12 @@
                       <v-icon>mdi-arrow-right-bold</v-icon>
                       {{ res.arrive }}
                     </v-list-item-title>
-                    <v-list-item-subtitle
+                    <!-- <v-list-item-subtitle
                       >annoncer par:
                       <span @click="getProfilAnonce(index)">
                         {{ res.username }}</span
                       >
-                    </v-list-item-subtitle>
+                    </v-list-item-subtitle> -->
                   </v-list-item-content>
                 </v-list-item>
                 <v-card-text>
@@ -76,12 +76,17 @@
                 <v-fade-transition>
                   <v-overlay v-if="hover" absolute color="#036358">
                     <v-row>
-                      <v-col cols="12" md="8">
-                        <v-icon
+                      <v-col cols="12" md="6">
+                        <v-btn fab flat color="success"
+                          ><v-icon>mdi-pencil</v-icon>
+                        </v-btn>
+                      </v-col>
+                      <v-col cols="12" md="6">
+                        <v-btn
+                          fab
                           color="error"
-                          x-large
                           @click="delecteReserHistory(index)"
-                          >mdi-delete</v-icon
+                          ><v-icon>mdi-delete</v-icon></v-btn
                         >
                       </v-col>
                     </v-row>
@@ -151,10 +156,10 @@
                       <v-icon>mdi-arrow-right-bold</v-icon>
                       {{ res.arrive }}
                     </v-list-item-title>
-                    <v-list-item-subtitle
+                    <!-- <v-list-item-subtitle
                       >annoncer par:
                       <span> {{ res.username }}</span>
-                    </v-list-item-subtitle>
+                    </v-list-item-subtitle> -->
                   </v-list-item-content>
                 </v-list-item>
                 <v-card-text>
@@ -162,18 +167,23 @@
                   <v-chip small
                     >bagage :{{ res.bagage ? "oui" : "non" }}</v-chip
                   >
-                  <v-chip small class="ml-1">prix :{{ res.prix }} TND</v-chip>
+                  <v-chip small class="ml-1" v-if="res.type == 'chauffeur'">prix :{{ res.prix }} TND</v-chip>
                 </v-card-text>
                 <v-card-text>{{ res.description }}</v-card-text>
                 <v-fade-transition>
                   <v-overlay v-if="hover" absolute color="#036358">
                     <v-row>
-                      <v-col cols="12" md="8">
-                        <v-icon
+                      <v-col cols="12" md="6">
+                        <v-btn fab color="success"
+                          ><v-icon>mdi-pencil</v-icon>
+                        </v-btn>
+                      </v-col>
+                      <v-col cols="12" md="6">
+                        <v-btn
+                          fab
                           color="error"
-                          x-large
                           @click="deleteTrajetHistory(index)"
-                          >mdi-delete</v-icon
+                          ><v-icon>mdi-delete</v-icon></v-btn
                         >
                       </v-col>
                     </v-row>
@@ -209,9 +219,8 @@ export default {
           var idReservation = res.data[i]._id;
           axios.get("covoiturage/" + res.data[i].idPoster).then((response) => {
             if (response.data !== "") {
-              response.data["idRe"] = idReservation
+              response.data["idRe"] = idReservation;
               this.reser.push(response.data);
-              
             }
           });
         }
@@ -239,7 +248,6 @@ export default {
   },
   methods: {
     delecteReserHistory(index) {
-     
       axios
         .delete("reservation/" + this.reser[index].idRe)
         .then(() => {

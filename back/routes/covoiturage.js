@@ -28,7 +28,7 @@ router.post("/postCov", async (req, res) => {
     prix: req.body.prix,
     phone: req.body.phone,
     description: req.body.description,
-    nbrPlace: req.body.nbrPlace,
+    nbrePlace: req.body.nbrePlace,
     bagage: req.body.bagage,
     idUserPoster: req.body.idUserPoster,
   });

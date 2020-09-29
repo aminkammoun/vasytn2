@@ -191,7 +191,9 @@
               </v-list>
             </v-card>
 
-            <v-btn success @click="update" x-large class="updateBtn">sauvegarder</v-btn>
+            <v-btn success @click="update" x-large class="updateBtn"
+              >sauvegarder</v-btn
+            >
           </div>
         </v-col>
         <v-col cols="12" md="3"> </v-col>
@@ -224,8 +226,10 @@ export default {
       return this.$store.state.userProfil;
     },
   },
-  created() {
+  beforeCreated() {
     this.loadPorfil();
+  },
+  created() {
     this.id = this.$store.state.userProfil._id;
     this.username = this.$store.state.userProfil.username;
     this.email = this.$store.state.userProfil.email;

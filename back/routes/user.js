@@ -49,7 +49,7 @@ router.post("/signIn", async (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
-  User.find({ username: req.body.username })
+  User.find({ email: req.body.email })
     .exec()
     .then((user) => {
       if (user.length < 1) {
