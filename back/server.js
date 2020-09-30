@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
+
 const convRouter = require("./routes/covoiturage");
 const reservation = require("./routes/reservation");
 const path = require("path");
@@ -17,10 +18,10 @@ app.use(function (req, res, next) {
 });
 
 mongoose
-  .connect(process.env.MONGO || "mongodb://localhost/covoiturage", {
+  .connect(process.env.MONGOURI || "mongodb://localhost/covoiturage", {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
   })
   .then(() => {
     console.log("connect to db");

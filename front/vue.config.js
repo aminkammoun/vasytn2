@@ -1,7 +1,7 @@
 const path=require('path')
 module.exports = {
   transpileDependencies: ["vuetify"],
-  outputDir: path.resolve(__dirname,'../backvasyTn-1/public'),
+  outputDir: path.resolve(__dirname,'../back/public'),
   devServer: {
     proxy: {
       "/reservation": {
