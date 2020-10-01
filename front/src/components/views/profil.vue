@@ -10,7 +10,7 @@
                 <div
                   style="text-align: center;
     position: relative;
-    left: 32%;"
+    left: 40%;"
                 >
                   <v-avatar
                     color="indigo"
@@ -226,18 +226,19 @@ export default {
       return this.$store.state.userProfil;
     },
   },
-  beforeCreated() {
-    this.loadPorfil();
-  },
+
   created() {
-    this.id = this.$store.state.userProfil._id;
-    this.username = this.$store.state.userProfil.username;
-    this.email = this.$store.state.userProfil.email;
-    this.phone = this.$store.state.userProfil.phone;
-    this.fumer = this.$store.state.userProfil.fumer;
-    this.rating = this.$store.state.userProfil.rating;
-    this.carmodel = this.$store.state.userProfil.carModel;
-    this.climat = this.$store.state.userProfil.climat;
+    this.loadPorfil();
+    setTimeout(() => {
+      this.id = this.$store.state.userProfil._id;
+      this.username = this.$store.state.userProfil.username;
+      this.email = this.$store.state.userProfil.email;
+      this.phone = this.$store.state.userProfil.phone;
+      this.fumer = this.$store.state.userProfil.fumer;
+      this.rating = this.$store.state.userProfil.rating;
+      this.carmodel = this.$store.state.userProfil.carModel;
+      this.climat = this.$store.state.userProfil.climat;
+    }, 500);
   },
   methods: {
     update() {

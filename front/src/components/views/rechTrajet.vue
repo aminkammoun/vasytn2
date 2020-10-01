@@ -233,7 +233,7 @@ export default {
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].type == "chauffeur") {
             this.trajetChauffeur.push(res.data[i]);
-            console.log(this.trajetChauffeur)
+
           } else {
             this.trajetPassenger.push(res.data[i]);
           }
@@ -259,7 +259,7 @@ export default {
       }
     },
     getProfilAnonce(index) {
-      console.log(this.trajetChauffeur[index].idUserPoster);
+
       if (this.tabs == "chauffeur") {
         axios
           .get("user/" + this.trajetChauffeur[index].idUserPoster)

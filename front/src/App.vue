@@ -24,7 +24,7 @@ export default {
     this.$store.state.userProfil = JSON.parse(
       localStorage.getItem("userProfil")
     );
-    console.log(this.$store.state.userProfil);
+
     if (localStorage.getItem('token') == "") {
       this.$router.push({name :"home"});
     }

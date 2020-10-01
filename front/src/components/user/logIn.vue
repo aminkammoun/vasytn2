@@ -131,7 +131,7 @@ export default {
 
             axios.get("user/" + this.authData.userId).then((res) => {
               localStorage.setItem("userProfil", JSON.stringify(res.data));
-              console.log("okkk");
+             
             });
           })
           .catch((err) => {

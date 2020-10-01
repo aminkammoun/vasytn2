@@ -240,7 +240,6 @@ export default {
             }
 
             (this.historyBool = true), (this.historyTrajetBool = true);
-            console.log(this.reser);
           });
       });
 
