@@ -1,104 +1,103 @@
 <template>
   <div class="all">
-    <v-row>
-      <v-col cols="12" md="4" class="hidden-sm-and-down">
-        <div class="divDesc">
-          <h1>vasyTN</h1>
-          <p><span></span></p>
-        </div>
-        <img
-          class="imgSvg"
-          src="../../assets/image/user-account-login-1805702-1539388.webp"
-          alt=""
-        />
-      </v-col>
-      <v-col cols="12" md="3"></v-col>
-      <v-col cols="12" md="4">
-        <v-card class="mx-auto">
-          <h1>Welcome</h1>
+    <v-container grid-list-xs>
+      <v-row>
+        <v-col cols="12" md="7" class="  hidden-sm-and-down">
+          <v-card flat tile class="clone">
+            <div class="fix">
+              <h2>Bienvenue, chez nous ...</h2>
+              <h6>
+                trouver des acompagnons et ne se deplacer pas seule .. juste enregister vous 
+              </h6>
+            </div>
+          </v-card>
+        </v-col>
 
-          <v-subheader
-            style="text-align: center !important;
-    margin-left: 33%;"
-            >Sign in to your account</v-subheader
-          >
-          <v-row
-            style="margin: 20px;
+        <v-col cols="12" md="5">
+          <div>
+            <v-card>
+              <div>
+                <v-subheader class="fixeStyle "
+                  >créer votre compte</v-subheader
+                >
+              </div>
+
+              <v-row
+                style="margin: 20px;
    "
-          >
-            <v-col cols="12" md="12">
-              <v-text-field
-                :rules="Rules"
-                required
-                class="inputField"
-                v-model="username"
-                label="username"
-                name="username"
-                id="username"
-                outlined
-              ></v-text-field>
-              <v-text-field
-                :rules="Rules"
-                required
-                class="inputField"
-                v-model="phone"
-                label="phone"
-                name="phone"
-                id="phone"
-                outlined
-              ></v-text-field>
-              <v-text-field
-                :rules="Rules"
-                required
-                class="inputField"
-                v-model="email"
-                label="email"
-                name="email"
-                id="email"
-                outlined
-              ></v-text-field>
-
-              <v-text-field
-                :rules="Rules"
-                required
-                class="inputField"
-                v-model="password"
-                label="password"
-                name="password"
-                id="password"
-                type="password"
-                outlined
-              ></v-text-field>
-              <v-btn
-                color="primary"
-                @click="submitted"
-                style=" width:100%;"
-                x-large
-                >submit</v-btn
               >
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" md="12" style="margin-left:30%;">
-              <span
-                >vous avez déja un compte...
-                <router-link to="/logIn" style="color:blue !important">cliquer ici</router-link></span
-              >
-            </v-col>
-          </v-row>
-          <span class="admin">vasyTN Admin</span>
-        </v-card>
-      </v-col>
-    </v-row>
-    <v-snackbar color="error" v-model="snackbar" :timeout="timeout">
-      ce compte est introuvable
+                <v-col cols="12" md="12">
+                  <v-text-field
+                    :rules="Rules"
+                    required
+                    class="inputField"
+                    v-model="username"
+                    label="username"
+                    name="username"
+                    id="username"
+                    outlined
+                  ></v-text-field>
+                  <v-text-field
+                    :rules="Rules"
+                    required
+                    class="inputField"
+                    v-model="phone"
+                    label="phone"
+                    name="phone"
+                    id="phone"
+                    outlined
+                  ></v-text-field>
+                  <v-text-field
+                    :rules="Rules"
+                    required
+                    class="inputField"
+                    v-model="email"
+                    label="email"
+                    name="email"
+                    id="email"
+                    outlined
+                  ></v-text-field>
 
-      <template v-slot:action="{ attrs }">
-        <v-btn color="black" text v-bind="attrs" @click="snackbar = false">
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
+                  <v-text-field
+                    :rules="Rules"
+                    required
+                    class="inputField"
+                    v-model="password"
+                    label="password"
+                    name="password"
+                    id="password"
+                    type="password"
+                    outlined
+                  ></v-text-field>
+                  <v-btn color="primary" @click="submitted" style=" width:100%;"
+                    >submit</v-btn
+                  >
+                </v-col>
+                <v-col cols="12" md="12">
+                  <span class="fixeStyle "
+                    >vous avez déja un compte...
+                    <router-link to="/logIn" style="color:blue !important"
+                      >cliquer ici</router-link
+                    ></span
+                  >
+                </v-col>
+              </v-row>
+
+              <span class="admin">vasyTN Admin</span>
+            </v-card>
+          </div>
+        </v-col>
+      </v-row>
+      <v-snackbar color="error" v-model="snackbar" :timeout="timeout">
+        ce compte est introuvable
+
+        <template v-slot:action="{ attrs }">
+          <v-btn color="black" text v-bind="attrs" @click="snackbar = false">
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+    </v-container>
   </div>
 </template>
 <script>
@@ -130,7 +129,7 @@ export default {
           this.$router.push("/logIn");
         });
     },
-    
+
     clear() {
       (this.username = ""),
         (this.phone = ""),
@@ -152,14 +151,12 @@ h1 {
   width: 100%;
   height: 76vh;
 }
-.v-card {
-  width: 100%;
-  position: relative;
-  top: 5%;
-}
+
 .admin {
   margin-top: 32px !important;
-  margin-left: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   font-size: 0.625rem !important;
   letter-spacing: 0.1666666667em !important;
@@ -194,5 +191,33 @@ p span::before {
   100% {
     content: "gagne votre temps ";
   }
+}
+.faza {
+  width: 100%;
+  height: 100%;
+}
+.fixeStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.clone {
+  position: relative;
+  left: 25px;
+  background: #1976d2;
+  width: 100%;
+  height: 100%;
+
+}
+.fix {
+  margin: 0px;
+  padding: 50px;
+  position: relative;
+  top: 20%;
+  color: #fff;
+  letter-spacing: 2px;
+}
+.fix h6{
+  margin-top: 20px !important;
 }
 </style>

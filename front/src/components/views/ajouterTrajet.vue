@@ -1,6 +1,6 @@
 <template>
   <div class="all">
-    <v-toolbar color="#252e38" dark flat dense>
+    <v-toolbar color="#1976d2" dark flat dense>
       <v-tabs centered class="color:red !important">
         <v-tab @click="tabs = 'chauffeur'">chauffeur</v-tab>
         <v-tab @click="tabs = 'passenger'">passager</v-tab>
@@ -9,9 +9,7 @@
 
     <v-container v-if="tabs == 'chauffeur'">
       <v-row>
-        <v-col cols="12" md="6" class="imgAdd">
-          <img src="../../assets/image/5568701.png" class="imgAdd" />
-        </v-col>
+        <v-col cols="12" md="3"> </v-col>
 
         <v-col cols="12" md="6">
           <v-card>
@@ -52,7 +50,7 @@
               </v-col>
               <v-col cols="12" md="6">
                 <v-switch
-                  color="#f2bb13"
+                  color="#1976d2"
                   v-model="switch1"
                   :label="`bagage: ${switch1.toString()}`"
                 ></v-switch>
@@ -113,16 +111,17 @@
                 ></v-text-field>
               </v-col>
             </v-row>
-            <v-btn success class="annonceBtn" @click="annoncer">annoncer</v-btn>
+            <v-btn color="primary" class="annonceBtn" @click="annoncer"
+              >annoncer</v-btn
+            >
           </v-card>
         </v-col>
+        <v-col cols="12" md="3"> </v-col>
       </v-row>
     </v-container>
     <v-container v-else>
       <v-row>
-        <v-col cols="12" md="6">
-          <img src="../../assets/image/5568701.png" class="imgAdd" />
-        </v-col>
+        <v-col cols="12" md="3"> </v-col>
         <v-col cols="12" md="6">
           <v-card>
             <v-textarea
@@ -191,7 +190,6 @@
                   required
                   dense
                   v-model="places"
-                  rounded
                   outlined
                   prepend-icon=""
                   name="places"
@@ -200,17 +198,19 @@
                 ></v-text-field>
               </v-col>
             </v-row>
-            <v-btn success class="annonceBtn" @click="annoncerPasenger"
+            <v-btn color="primary" class="annonceBtn" @click="annoncerPasenger"
               >annoncer</v-btn
             >
           </v-card>
         </v-col>
+        <v-col cols="12" md="3"> </v-col>
       </v-row>
     </v-container>
   </div>
 </template>
 <script>
 import axios from "axios";
+
 export default {
   data() {
     return {
@@ -278,14 +278,6 @@ export default {
 };
 </script>
 <style scoped>
-.all {
-  padding: 0;
-  margin: 0;
-  margin: 0 auto;
-  min-height: 100%;
-  width: 100%;
-}
-
 .annonceBtn {
   width: 100%;
   color: #454c55;

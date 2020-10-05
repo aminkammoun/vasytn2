@@ -33,7 +33,7 @@ export default {
 </script>
 <style scoped>
 *{
-  font-family: Open Sans,Lato,sans-serif !important;
+  font-family: 'poppins-bold', sans-serif !important;
 }
 
 .all {

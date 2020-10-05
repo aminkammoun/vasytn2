@@ -1,6 +1,6 @@
 <template>
-  <div style="heigth:100%;">
-    <v-app-bar color="#252e38" class=".d-md-none .d-lg-flex">
+  <div style="heigth:80%;">
+    <v-app-bar dense   color="#1976d2" class=".d-md-none .d-lg-flex">
       <v-toolbar-title>
         <router-link to="/"
           ><img class="Logo" src="../../assets/image/monLogo.png"
@@ -9,11 +9,11 @@
 
       <v-spacer></v-spacer>
       <v-btn text class="ma-2 hidden-sm-and-down " @click="checkAuth">
-        <v-icon color="#f2bb13">mdi-plus</v-icon>
+        <v-icon color="#fff">mdi-plus</v-icon>
         <router-link to="/ajoutTrajet">ajouter trajet</router-link>
       </v-btn>
       <v-btn text class="hidden-sm-and-down" @click="checkAuth">
-        <v-icon color="#f2bb13">mdi-magnify</v-icon>
+        <v-icon color="#fff">mdi-magnify</v-icon>
         <router-link to="/rechercheTrajet">chercher trajet</router-link>
       </v-btn>
       <v-spacer></v-spacer>
@@ -28,7 +28,7 @@
         <router-link to="/history"><v-icon>mdi-history</v-icon></router-link>
       </v-btn>
       <v-btn text v-if="token" class="hidden-sm-and-down">
-        <v-icon color="#f2bb13">mdi-account-multiple-outline</v-icon>
+        <v-icon color="#fff ">mdi-account-multiple-outline</v-icon>
         <router-link to="/profil">{{ token ? username : "" }}</router-link>
       </v-btn>
       <v-btn @click="logOut" text icon v-if="token" class="hidden-sm-and-down">
@@ -40,7 +40,7 @@
         class="hidden-md-and-up"
       ></v-app-bar-nav-icon>
     </v-app-bar>
-    <v-navigation-drawer app v-model="drawer">
+    <v-navigation-drawer style="z-index:1000;" app v-model="drawer">
       <v-list>
         <template>
           <v-list-item>
@@ -51,13 +51,13 @@
             <v-icon @click="drawer = false">mdi-close</v-icon>
           </v-list-item>
           <v-divider></v-divider>
-          <v-list-item>
-            <router-link to="/ajoutTrajet" class="navLink"
+          <v-list-item @click="checkAuth">
+            <router-link to="/ajoutTrajet" class="navLink" 
               >ajouter trajet</router-link
             >
           </v-list-item>
-          <v-list-item>
-            <router-link to="/rechercheTrajet" class="navLink"
+          <v-list-item @click="checkAuth">
+            <router-link to="/rechercheTrajet" class="navLink" 
               >chercher trajet</router-link
             >
           </v-list-item>
@@ -143,14 +143,12 @@ export default {
   font-family: Open Sans, Lato, sans-serif !important;
 }
 a {
-  font-weight: 600;
-  color: #f2bb13 !important;
+  color: #fff !important;
   text-decoration: none !important;
 }
 .btn {
-  font-family: "Noto Sans", sans-serif;
   cursor: pointer;
-  box-shadow: -1px 3px 3px 0 rgba(80, 80, 80, 0.2);
+
   width: 113px;
   height: 39px;
   padding: 7px;
@@ -158,7 +156,6 @@ a {
   border-radius: 30px;
   margin: 0 0 2px;
   color: #fff;
-  font-weight: bold;
   flex: 0 0 auto;
 }
 .navLink {

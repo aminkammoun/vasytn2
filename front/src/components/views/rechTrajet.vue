@@ -204,6 +204,7 @@
         </v-card>
       </v-dialog>
     </div>
+    
   </div>
 </template>
 <script>
@@ -211,6 +212,7 @@ import axios from "axios";
 
 export default {
   inject: ["theme"],
+  
   data() {
     return {
       tabs: "chauffeur",
