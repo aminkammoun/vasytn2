@@ -44,7 +44,7 @@
     </div>
 
     <div v-else>
-      <v-toolbar color="#252e38" dark flat dense>
+      <v-toolbar color="#1976d2" dark flat dense>
         <template>
           <v-tabs centered>
             <v-tab @click="tabs = 'chauffeur'">chauffeur</v-tab>
@@ -63,36 +63,73 @@
           >
             <v-card max-width="344" class="mx-auto">
               <v-list-item>
-                <v-list-item-avatar color="grey"></v-list-item-avatar>
+                <v-list-item-avatar>
+                  <img src="https://cdn.vuetifyjs.com/images/lists/1.jpg" alt=""
+                /></v-list-item-avatar>
                 <v-list-item-content>
                   <v-list-item-title class="headline">
-                    <span class="userStyle" @click="getProfilAnonce(index)">
-                      {{ trajet.username }}</span
+                    <span class="userStyle">
+                      {{ trajet.username }}
+                      <v-icon
+                        style="font-size: 21px;"
+                        @click="getProfilAnonce(index)"
+                        >mdi-eye</v-icon
+                      ></span
                     >
                   </v-list-item-title>
                   <v-list-item-subtitle>
                     {{ trajet.time }}
                   </v-list-item-subtitle>
                 </v-list-item-content>
+                <span class="priceStyle"> {{ trajet.prix }} dt</span>
               </v-list-item>
-              <v-card-text>
-                <v-chip small
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title style="    margin-top: 0px;">
+                    <span>
+                      <v-icon>mdi-map-marker-circle</v-icon>
+                      {{ trajet.depart }}</span
+                    >
+                    |
+                    <span>
+                      <v-icon>mdi-flag-checkered</v-icon>
+                      {{ trajet.arrive }}</span
+                    >
+                  </v-list-item-title>
+                  <v-list-item-title style="    margin-top: 11px;">
+                    <v-chip x-small
+                      >bagage :{{ trajet.bagage ? "oui" : "non" }}</v-chip
+                    >
+
+                    <v-chip x-small class="ml-1">
+                      {{ trajet.nbrePlace }} places</v-chip
+                    >
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-btn
+                tile
+                rounded
+                dark
+                color="deep-purple accent-4"
+                width="100%"
+                @click="reservation(index)"
+                >reserver</v-btn
+              >
+              <!-- <v-card-text>
+                <v-chip x-small
                   >bagage :{{ trajet.bagage ? "oui" : "non" }}</v-chip
                 >
-                <v-chip small class="ml-1">prix :{{ trajet.prix }} TND</v-chip>
-                <v-chip small class="ml-1">
-                  {{ trajet.nbrePlace }} places</v-chip>
-              </v-card-text>
-              <v-card-text>
-                cov {{ trajet.depart }}
+
+                <v-chip x-small class="ml-1">
+                  {{ trajet.nbrePlace }} places</v-chip
+                >
+
+                {{ trajet.depart }}
                 <v-icon>mdi-arrow-right-bold</v-icon>
                 {{ trajet.arrive }}
-                <v-card-text>{{ trajet.description }} </v-card-text>
-                </v-card-text
-              >
-              
 
-              <v-card-actions>
                 <v-btn
                   text
                   color="deep-purple accent-4"
@@ -100,7 +137,7 @@
                   @click="reservation(index)"
                   >reserver</v-btn
                 >
-              </v-card-actions>
+              </v-card-text> -->
             </v-card>
           </v-col>
         </v-row>
@@ -115,29 +152,72 @@
           >
             <v-card max-width="344" class="mx-auto">
               <v-list-item>
-                <v-list-item-avatar color="grey"></v-list-item-avatar>
+                <v-list-item-avatar>
+                  <img src="https://cdn.vuetifyjs.com/images/lists/1.jpg" alt=""
+                /></v-list-item-avatar>
                 <v-list-item-content>
                   <v-list-item-title class="headline">
-                    cov {{ trajet.depart }}
-                    <v-icon>mdi-arrow-right-bold</v-icon>
-                    {{ trajet.arrive }}
+                    <span class="userStyle">
+                      {{ trajet.username }}
+                      <v-icon
+                        style="font-size: 21px;"
+                        @click="getProfilAnonce(index)"
+                        >mdi-eye</v-icon
+                      ></span
+                    >
                   </v-list-item-title>
-                  <v-list-item-subtitle
-                    >annoncé par:<span
-                      class="userStyle"
-                      @click="getProfilAnonce(index)"
-                    >
-                      {{ trajet.username }}</span
-                    >
+                  <v-list-item-subtitle>
+                    {{ trajet.time }}
                   </v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
-              <v-card-text>{{ trajet.description }}</v-card-text>
-              <v-card-text>
-                <v-chip>{{ trajet.time }}</v-chip>
-                <v-chip>bagage :{{ trajet.bagage ? "oui" : "non" }}</v-chip>
-              </v-card-text>
-              <v-card-actions>
+              <v-list-item>
+                <v-list-item-content>
+                  <v-list-item-title>
+                    <span>
+                      <v-icon>mdi-map-marker-circle</v-icon>
+                      {{ trajet.depart }}</span
+                    >
+                    |
+                    <span>
+                      <v-icon>mdi-flag-checkered</v-icon>
+                      {{ trajet.arrive }}</span
+                    >
+                  </v-list-item-title>
+                  <v-list-item-title style="    margin-top: 11px;">
+                    <v-chip x-small
+                      >bagage :{{ trajet.bagage ? "oui" : "non" }}</v-chip
+                    >
+
+                    <v-chip x-small class="ml-1">
+                      {{ trajet.nbrePlace }} places</v-chip
+                    >
+                  </v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-btn
+                tile
+                rounded
+                dark
+                color="deep-purple accent-4"
+                width="100%"
+                @click="reservation(index)"
+                >reserver</v-btn
+              >
+              <!-- <v-card-text>
+                <v-chip x-small
+                  >bagage :{{ trajet.bagage ? "oui" : "non" }}</v-chip
+                >
+
+                <v-chip x-small class="ml-1">
+                  {{ trajet.nbrePlace }} places</v-chip
+                >
+
+                {{ trajet.depart }}
+                <v-icon>mdi-arrow-right-bold</v-icon>
+                {{ trajet.arrive }}
+
                 <v-btn
                   text
                   color="deep-purple accent-4"
@@ -145,7 +225,7 @@
                   @click="reservation(index)"
                   >reserver</v-btn
                 >
-              </v-card-actions>
+              </v-card-text> -->
             </v-card>
           </v-col>
         </v-row>
@@ -204,7 +284,6 @@
         </v-card>
       </v-dialog>
     </div>
-    
   </div>
 </template>
 <script>
@@ -212,7 +291,7 @@ import axios from "axios";
 
 export default {
   inject: ["theme"],
-  
+
   data() {
     return {
       tabs: "chauffeur",
@@ -235,7 +314,6 @@ export default {
         for (var i = 0; i < res.data.length; i++) {
           if (res.data[i].type == "chauffeur") {
             this.trajetChauffeur.push(res.data[i]);
-
           } else {
             this.trajetPassenger.push(res.data[i]);
           }
@@ -261,7 +339,6 @@ export default {
       }
     },
     getProfilAnonce(index) {
-
       if (this.tabs == "chauffeur") {
         axios
           .get("user/" + this.trajetChauffeur[index].idUserPoster)
@@ -300,6 +377,13 @@ export default {
 }
 .userStyle {
   cursor: pointer;
-  color: blue;
+  font-size: 20px;
+}
+.priceStyle {
+  background: #6200ea;
+  color: #fff;
+  padding: 3px;
+  border-radius: 49px;
+  font-size: 15px;
 }
 </style>

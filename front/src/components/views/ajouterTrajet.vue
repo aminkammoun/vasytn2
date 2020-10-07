@@ -88,6 +88,7 @@
                   v-model="places"
                   outlined
                   dense
+                  append-icon="mdi-seat-recline-normal"
                   clearable
                   name="places"
                   label="places disponible"
@@ -191,7 +192,7 @@
                   dense
                   v-model="places"
                   outlined
-                  prepend-icon=""
+                  append-icon="mdi-seat-recline-normal"
                   name="places"
                   label="places"
                   id="places1   "
