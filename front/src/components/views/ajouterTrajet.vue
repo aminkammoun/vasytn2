@@ -1,7 +1,7 @@
 <template>
   <div class="all">
-    <v-toolbar color="#1976d2" dark flat dense>
-      <v-tabs centered class="color:red !important">
+    <v-toolbar color="#fff"  flat dense>
+      <v-tabs centered color="#df3d4d">
         <v-tab @click="tabs = 'chauffeur'">chauffeur</v-tab>
         <v-tab @click="tabs = 'passenger'">passager</v-tab>
       </v-tabs>
@@ -20,6 +20,7 @@
               outlined
               label="description"
               v-model="description"
+              color="#df3d4d"
             ></v-textarea>
             <v-row>
               <v-col cols="12" md="6">
@@ -33,6 +34,7 @@
                   v-model="depart"
                   name="depart"
                   label="depart"
+                  color="#df3d4d"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
@@ -46,11 +48,12 @@
                   v-model="arrive"
                   name="arrivé"
                   label="arrivé"
+                  color="#df3d4d"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
                 <v-switch
-                  color="#1976d2"
+                  color="#df3d4d"
                   v-model="switch1"
                   :label="`bagage: ${switch1.toString()}`"
                 ></v-switch>
@@ -63,6 +66,7 @@
                   transition="scale-transition"
                   offset-y
                   min-width="290px"
+                  color="#df3d4d"
                 >
                   <template v-slot:activator="{ on, attrs }">
                     <v-text-field
@@ -75,11 +79,13 @@
                       readonly
                       v-bind="attrs"
                       v-on="on"
+                      color="#df3d4d"
                     ></v-text-field>
                   </template>
                   <v-date-picker
                     v-model="time"
                     @input="menu2 = false"
+                    color="#df3d4d"
                   ></v-date-picker>
                 </v-menu>
               </v-col>
@@ -95,6 +101,7 @@
                   id="places"
                   :rules="Rules"
                   required
+                  color="#df3d4d"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
@@ -109,10 +116,11 @@
                   name="cotisation"
                   label="cotisation tnd"
                   id="cotisation"
+                  color="#df3d4d"
                 ></v-text-field>
               </v-col>
             </v-row>
-            <v-btn color="primary" class="annonceBtn" @click="annoncer"
+            <v-btn color="#df3d4d" class="annonceBtn" @click="annoncer"
               >annoncer</v-btn
             >
           </v-card>
@@ -131,6 +139,7 @@
               outlined
               label="description"
               v-model="description"
+              color="#df3d4d"
             ></v-textarea>
             <v-row>
               <v-col cols="12" md="6">
@@ -144,6 +153,7 @@
                   v-model="depart"
                   name="depart"
                   label="depart"
+                  color="#df3d4d"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
@@ -156,6 +166,7 @@
                   v-model="arrive"
                   name="arrivé"
                   label="arrivé"
+                  color="#df3d4d"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" md="6">
@@ -166,6 +177,7 @@
                   transition="scale-transition"
                   offset-y
                   min-width="290px"
+                  color="#df3d4d"
                 >
                   <template v-slot:activator="{ on, attrs }">
                     <v-text-field
@@ -177,6 +189,7 @@
                       readonly
                       v-bind="attrs"
                       v-on="on"
+                      color="#df3d4d"
                     ></v-text-field>
                   </template>
                   <v-date-picker
@@ -196,10 +209,11 @@
                   name="places"
                   label="places"
                   id="places1   "
+                  color="#df3d4d"
                 ></v-text-field>
               </v-col>
             </v-row>
-            <v-btn color="primary" class="annonceBtn" @click="annoncerPasenger"
+            <v-btn class="annonceBtn" @click="annoncerPasenger"
               >annoncer</v-btn
             >
           </v-card>
@@ -281,8 +295,8 @@ export default {
 <style scoped>
 .annonceBtn {
   width: 100%;
-  color: #454c55;
-  background: #f2bb13 !important;
+  color: #fff;
+  background: #df3d4d !important;
   font-family: Open Sans, Lato, sans-serif !important;
   font-weight: 600;
 }

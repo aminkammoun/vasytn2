@@ -1,6 +1,6 @@
 <template>
   <div style="heigth:80%;">
-    <v-app-bar dense   color="#1976d2" class=".d-md-none .d-lg-flex">
+    <v-app-bar dense color="#fff" class=".d-md-none .d-lg-flex">
       <v-toolbar-title>
         <router-link to="/"
           ><img class="Logo" src="../../assets/image/monLogo.png"
@@ -9,11 +9,11 @@
 
       <v-spacer></v-spacer>
       <v-btn text class="ma-2 hidden-sm-and-down " @click="checkAuth">
-        <v-icon color="#fff">mdi-plus</v-icon>
+        <v-icon color="#000">mdi-plus</v-icon>
         <router-link to="/ajoutTrajet">ajouter trajet</router-link>
       </v-btn>
       <v-btn text class="hidden-sm-and-down" @click="checkAuth">
-        <v-icon color="#fff">mdi-magnify</v-icon>
+        <v-icon color="#000">mdi-magnify</v-icon>
         <router-link to="/rechercheTrajet">chercher trajet</router-link>
       </v-btn>
       <v-spacer></v-spacer>
@@ -28,22 +28,30 @@
         <router-link to="/history"><v-icon>mdi-history</v-icon></router-link>
       </v-btn>
       <v-btn text v-if="token" class="hidden-sm-and-down">
-        <v-icon color="#fff ">mdi-account-multiple-outline</v-icon>
+        <v-icon color="#000 ">mdi-account-multiple-outline</v-icon>
         <router-link to="/profil">{{ token ? username : "" }}</router-link>
       </v-btn>
       <v-btn @click="logOut" text icon v-if="token" class="hidden-sm-and-down">
-        <v-icon color="white">mdi-logout</v-icon>
+        <v-icon color="#000">mdi-logout</v-icon>
       </v-btn>
 
       <v-app-bar-nav-icon
+        color="#df3d4d"
         @click.stop="drawer = !drawer"
         class="hidden-md-and-up"
       ></v-app-bar-nav-icon>
     </v-app-bar>
-    <v-navigation-drawer style="z-index:1000;" app v-model="drawer">
+    <v-navigation-drawer
+      color="#810b0d"
+      dark
+      style="z-index:1000;"
+      app
+      v-model="drawer"
+    >
       <v-list>
         <template>
           <v-list-item>
+            <v-spacer></v-spacer>
             <router-link to="/profil" class="navLink" v-if="token">{{
               token ? username : ""
             }}</router-link>
@@ -52,36 +60,45 @@
           </v-list-item>
           <v-divider></v-divider>
           <v-list-item @click="checkAuth">
-            <router-link to="/ajoutTrajet" class="navLink" 
-              >ajouter trajet</router-link
+            <v-btn text
+              ><router-link to="/ajoutTrajet" class="navLink"
+                >ajouter trajet</router-link
+              ></v-btn
             >
           </v-list-item>
           <v-list-item @click="checkAuth">
-            <router-link to="/rechercheTrajet" class="navLink" 
-              >chercher trajet</router-link
+            <v-btn text
+              ><router-link to="/rechercheTrajet" class="navLink"
+                >chercher trajet</router-link
+              ></v-btn
             >
           </v-list-item>
+
+          <v-list-item>
+            <v-btn text
+              ><router-link v-if="token" to="/history" class="navLink"
+                >historique</router-link
+              ></v-btn
+            >
+          </v-list-item>
+          <v-list-item
+            ><v-btn text @click="logOut" v-if="token">
+              deconnexion
+            </v-btn></v-list-item
+          >
           <v-list-item
             ><button text v-if="!token">
               <router-link to="/logIn" class="navLink">sign in</router-link>
             </button></v-list-item
           >
           <v-list-item>
-            <router-link v-if="!token" to="/signUp" class="navLink"
-              >sign Up</router-link
+            <v-btn v-if="!token"
+              ><router-link to="/signUp" class="navLink"
+                >sign Up</router-link
+              ></v-btn
             >
           </v-list-item>
-          <v-list-item>
-            <router-link v-if="token" to="/history" class="navLink"
-              >historique</router-link
-            >
-          </v-list-item>
-
-          <v-list-item
-            ><v-btn text @click="logOut" v-if="token">
-              deconnexion
-            </v-btn></v-list-item
-          >
+          
         </template>
       </v-list>
     </v-navigation-drawer>
@@ -139,10 +156,11 @@ export default {
 };
 </script>
 <style scoped>
-* {
-  font-family: Open Sans, Lato, sans-serif !important;
+a{
+  color: #000 !important;
+  text-decoration: none !important;
 }
-a {
+.navLink {
   color: #fff !important;
   text-decoration: none !important;
 }
@@ -155,15 +173,11 @@ a {
   border: none;
   border-radius: 30px;
   margin: 0 0 2px;
-  color: #fff;
+
   flex: 0 0 auto;
 }
-.navLink {
-  color: black !important;
-}
+
 .Logo {
-  padding-top: 0px;
   width: 134px;
-  height: 166px;
 }
 </style>

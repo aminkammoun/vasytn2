@@ -32,7 +32,7 @@
 
                 <v-list-item>
                   <v-list-item-avatar>
-                    <v-icon color="#f2bb13">mdi-email</v-icon>
+                    <v-icon color="#df3d4d">mdi-email</v-icon>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
@@ -44,7 +44,7 @@
                 </v-list-item>
                 <v-list-item>
                   <v-list-item-avatar>
-                    <v-icon color="#f2bb13">mdi-phone</v-icon>
+                    <v-icon color="#df3d4d">mdi-phone</v-icon>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
@@ -77,7 +77,7 @@
 
                 <v-list-item>
                   <v-list-item-avatar>
-                    <v-icon color="#f2bb13">mdi-smoking</v-icon>
+                    <v-icon color="#df3d4d">mdi-smoking</v-icon>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
@@ -114,7 +114,7 @@
 
                 <v-list-item>
                   <v-list-item-avatar>
-                    <v-icon color="#f2bb13">mdi-car</v-icon>
+                    <v-icon color="#df3d4d">mdi-car</v-icon>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
@@ -147,7 +147,7 @@
 
                 <v-list-item>
                   <v-list-item-avatar>
-                    <v-icon color="#f2bb13">mdi-theme-light-dark</v-icon>
+                    <v-icon color="#df3d4d">mdi-theme-light-dark</v-icon>
                   </v-list-item-avatar>
 
                   <v-list-item-content>
@@ -184,14 +184,14 @@
                 <v-rating
                   class="rate"
                   v-model="rating"
-                  background-color="orange lighten-3"
-                  color="orange"
+                  background-color="#df3d4d"
+                  color="#df3d4d"
                   medium
                 ></v-rating>
               </v-list>
             </v-card>
 
-            <v-btn success @click="update" x-large class="updateBtn"
+            <v-btn dark @click="update" large class="updateBtn"
               >sauvegarder</v-btn
             >
           </div>
@@ -280,9 +280,9 @@ export default {
   margin-top: 6px;
   position: relative;
   left: 32%;
-  background: #f2bb13 !important;
+  background: #df3d4d !important;
   font-family: Quicksand, sans-serif !important;
   font-weight: 600;
-  color: #454c55;
+
 }
 </style>

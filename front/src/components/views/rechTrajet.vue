@@ -44,9 +44,9 @@
     </div>
 
     <div v-else>
-      <v-toolbar color="#1976d2" dark flat dense>
+      <v-toolbar color="#fff" flat dense>
         <template>
-          <v-tabs centered>
+          <v-tabs centered color="#df3d4d">
             <v-tab @click="tabs = 'chauffeur'">chauffeur</v-tab>
             <v-tab @click="tabs = 'passenger'">passager</v-tab>
           </v-tabs>
@@ -112,7 +112,7 @@
                 tile
                 rounded
                 dark
-                color="deep-purple accent-4"
+                color="#df3d4d"
                 width="100%"
                 @click="reservation(index)"
                 >reserver</v-btn
@@ -200,7 +200,7 @@
                 tile
                 rounded
                 dark
-                color="deep-purple accent-4"
+                color="#df3d4d"
                 width="100%"
                 @click="reservation(index)"
                 >reserver</v-btn
@@ -380,7 +380,7 @@ export default {
   font-size: 20px;
 }
 .priceStyle {
-  background: #6200ea;
+  background: #810b0d;
   color: #fff;
   padding: 3px;
   border-radius: 49px;

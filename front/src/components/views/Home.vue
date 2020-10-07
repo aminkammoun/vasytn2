@@ -47,7 +47,7 @@ export default {
 .all {
   font-family: "Lato", sans-serif;
   margin: 0;
-  background: url("../../assets/image/newhome.jpg") no-repeat center center
+  background: url("../../assets/image/home.jpg") no-repeat center center
     fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -95,8 +95,8 @@ a.btn:hover {
 }
 
 .flex-form input[type="submit"] {
-  background: #1976d2;
-  border: 1px solid #1976d2;
+  background: #df3d4d;
+  border: 1px solid #df3d4d;
   color: #000;
   padding: 0 30px;
   cursor: pointer;
@@ -106,8 +106,8 @@ a.btn:hover {
 }
 
 .flex-form input[type="submit"]:hover {
-  background: #fad376;
-  border: 1px solid #fad376;
+  background: #df3d4d;
+  border: 1px solid #df3d4d;
 }
 
 .flex-form {

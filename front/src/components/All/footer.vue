@@ -1,7 +1,7 @@
 <template>
-  <v-footer color="#252e38" dark padless>
+  <v-footer  dark padless>
     <v-card class="flex" flat >
-      <v-card-title class="color:#252e38">
+      <v-card-title class="color:#df3d4d">
         <strong class="subheading">Get connected with us on social networks!</strong>
 
         <v-spacer></v-spacer>
