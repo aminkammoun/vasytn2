@@ -162,7 +162,7 @@ a {
   color: black !important;
 }
 .Logo {
-  padding-top: 11px;
+  padding-top: 0px;
   width: 134px;
   height: 166px;
 }

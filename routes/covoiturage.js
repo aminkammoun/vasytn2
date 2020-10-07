@@ -14,7 +14,7 @@ router.get("/:id", async (req, res) => {
   res.send(covoiturage);
 });
 router.get("/owner/:id", async (req, res) => {
-  const covoiturage = await Covoiturage.find({idUserPoster:req.params.id});
+  const covoiturage = await Covoiturage.find({ idUserPoster: req.params.id });
   res.send(covoiturage);
 });
 
@@ -35,7 +35,11 @@ router.post("/postCov", async (req, res) => {
   await cov.save();
   res.send(cov);
 });
-
+router.get("/distination/:distination", async (req, res) => {
+  const distination = await Covoiturage.find({ arrive: req.params.distination });
+  if (!distination) return res.status(404).send("The distination not found.");
+  res.send(distination);
+});
 router.put("/:id", async (req, res) => {
   const genre = await Covoiturage.findByIdAndUpdate(req.params.id, {
     depart: req.body.depart,

@@ -75,21 +75,14 @@
                 <v-card-text>{{ res.description }}</v-card-text>
                 <v-fade-transition>
                   <v-overlay v-if="hover" absolute color="#036358">
-                    <v-row>
-                      <v-col cols="12" md="6">
-                        <v-btn fab flat color="success"
-                          ><v-icon>mdi-pencil</v-icon>
-                        </v-btn>
-                      </v-col>
-                      <v-col cols="12" md="6">
+                    
                         <v-btn
                           fab
                           color="error"
                           @click="delecteReserHistory(index)"
                           ><v-icon>mdi-delete</v-icon></v-btn
                         >
-                      </v-col>
-                    </v-row>
+                      
                   </v-overlay>
                 </v-fade-transition>
               </v-card>

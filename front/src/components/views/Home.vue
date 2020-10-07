@@ -1,6 +1,5 @@
 <template>
   <div>
- 
     <v-main>
       <div class="all">
         <div class="cover">
@@ -14,13 +13,12 @@
               placeholder="votre destination ?"
               v-model="arrive"
             />
-            <input type="submit" value="Search" />
+            <input type="submit" value="Search" @click="search" />
           </form>
         </div>
       </div>
       <app-details></app-details>
     </v-main>
- 
   </div>
 </template>
 <script>
@@ -29,12 +27,19 @@ import Details from "../seconds/details";
 export default {
   components: {
     appDetails: Details,
-    
   },
   data() {
     return {
       arrive: "",
     };
+  },
+ 
+  methods: {
+    search() {
+      this.$store.state.distination = this.arrive;
+      console.log(this.$store.state.distination);
+      this.$router.push('/reche')
+    },
   },
 };
 </script>
