@@ -234,7 +234,7 @@ export default {
       this.username = this.$store.state.userProfil.username;
       this.email = this.$store.state.userProfil.email;
       this.phone = this.$store.state.userProfil.phone;
-      this.fumer = this.$store.state.userProfil.fumer;
+      this.fumer = this.$store.state.rofiuserPl.fumer;
       this.rating = this.$store.state.userProfil.rating;
       this.carmodel = this.$store.state.userProfil.carModel;
       this.climat = this.$store.state.userProfil.climat;
