@@ -33,12 +33,11 @@ export default {
       arrive: "",
     };
   },
- 
   methods: {
     search() {
       this.$store.state.distination = this.arrive;
       console.log(this.$store.state.distination);
-      this.$router.push('/reche')
+      this.$router.push("/reche");
     },
   },
 };
@@ -47,8 +46,7 @@ export default {
 .all {
   font-family: "Lato", sans-serif;
   margin: 0;
-  background: url("../../assets/image/home.jpg") no-repeat center center
-    fixed;
+  background: url("../../assets/image/home.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;

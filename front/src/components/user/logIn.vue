@@ -126,10 +126,23 @@ export default {
             this.$store.state.token = this.authData.token;
 
             this.setWithExpiry("token", this.authData.token, 86400000);
+            process.env.TOKEN = this.authData.token;
+
             localStorage.setItem("idUser", this.authData.userId);
 
             axios.get("user/" + this.authData.userId).then((res) => {
-              localStorage.setItem("userProfil", JSON.stringify(res.data));
+              localStorage.setItem(
+                "userProfil",
+                JSON.stringify({
+                  username: res.data.username,
+                  phone: res.data.phone,
+                  carModel: res.data.carModel,
+                  email: res.data.email,
+                  fumer: res.data.fumer,
+                  rating: res.data.rating,
+                  climat: res.data.climat,
+                })
+              );
             });
             setTimeout(() => {
               this.$router.push({
@@ -181,21 +194,13 @@ p span::before {
   content: "";
   animation: profile 5s infinite;
 }
-@keyframes profile {
-  0% {
-    content: "platforme tunisienne de covoiturage";
-  }
-  50% {
-    content: "facilite votre transport";
-  }
-  100% {
-    content: "gagne votre temps ";
-  }
-}
+
 .fixeStyle {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  top: 12%;
 }
 .clone {
   position: relative;
@@ -216,4 +221,5 @@ p span::before {
 .fix h6 {
   margin-top: 20px !important;
 }
+
 </style>

@@ -234,7 +234,7 @@ export default {
       this.username = this.$store.state.userProfil.username;
       this.email = this.$store.state.userProfil.email;
       this.phone = this.$store.state.userProfil.phone;
-      this.fumer = this.$store.state.rofiuserPl.fumer;
+      this.fumer = this.$store.state.userProfil.fumer;
       this.rating = this.$store.state.userProfil.rating;
       this.carmodel = this.$store.state.userProfil.carModel;
       this.climat = this.$store.state.userProfil.climat;
@@ -255,10 +255,6 @@ export default {
     loadPorfil() {
       Axios.get("user/" + localStorage.getItem("idUser")).then((res) => {
         this.$store.state.userProfil = res.data;
-        localStorage.setItem(
-          "userProfil",
-          JSON.stringify(this.$store.state.userProfil)
-        );
       });
     },
   },
@@ -283,6 +279,5 @@ export default {
   background: #df3d4d !important;
   font-family: Quicksand, sans-serif !important;
   font-weight: 600;
-
 }
 </style>

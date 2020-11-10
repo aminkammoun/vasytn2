@@ -1,8 +1,12 @@
 <template>
   <v-app>
-    <app-header></app-header>
+    <app-header
+      v-if="!hide"
+    ></app-header>
     <router-view></router-view>
-    <app-footer></app-footer>
+    <app-footer
+      v-if="!hide"
+    ></app-footer>
   </v-app>
 </template>
 
@@ -20,27 +24,32 @@ export default {
   data: () => ({
     //
   }),
+  computed: {
+    hide() {
+      return this.$route.path === "/logIn" || this.$route.path === "/signUp";
+    },
+  },
   created() {
     this.$store.state.userProfil = JSON.parse(
       localStorage.getItem("userProfil")
     );
 
-    if (localStorage.getItem('token') == "") {
-      this.$router.push({name :"home"});
+    if (localStorage.getItem("token") == "") {
+      this.$router.push({ name: "home" });
     }
   },
 };
 </script>
 <style scoped>
-*{
-  font-family: 'poppins-bold', sans-serif !important;
+* {
+  font-family: "poppins-bold", sans-serif !important;
 }
 
 .all {
   padding: 0;
   margin: 0;
   min-height: 100vh;
- /* background:  #252e38; */
+  /* background:  #252e38; */
   background: #f2f5f8;
 }
 </style>

@@ -146,10 +146,9 @@ export default {
 h1 {
   text-align: center;
 }
-
-.all {
-  width: 100%;
-  height: 76vh;
+.all{
+ position: relative;
+ top: 10%;
 }
 
 .admin {
@@ -180,17 +179,6 @@ h1 {
 p span::before {
   content: "";
   animation: profile 5s infinite;
-}
-@keyframes profile {
-  0% {
-    content: "platforme tunisienne de covoiturage";
-  }
-  50% {
-    content: "facilite votre transport";
-  }
-  100% {
-    content: "gagne votre temps ";
-  }
 }
 .faza {
   width: 100%;
